@@ -1,0 +1,56 @@
+<!DOCTYPE HTML> <meta name="viewport" content="width=device-width, initial-scale=1" http-equiv="refresh" > 
+<html>
+<head>
+ <style> 
+form {margin: 0 auto; width: 0 auto;padding: 1em; border: 1px solid #CCC;border-radius: 1em; display: table;}
+div { display: table-row; align:center }
+label { display: table-cell: text-align:right; vertical-align: middle;} 
+input { display: table-cell: align:middle; margin: 10px 5px; vertical-align: middle; } 
+input[type=submit] {background-color: #4CAF50;color: white;padding: 12px 20px;border: none;border-radius: 
+4px;cursor: pointer;} input[type=radio] { display: table-cell; margin: 5px 5px; vertical-align: middle; horizontal-align:center } 
+
+.reveal-if-active { opacity : 0; height: 0px; width:0px; overflow: hidden; display:block; border:1px solid black; } 
+input[type="radio"]:checked ~ .reveal-if-active, input[type="checkbox"]:checked ~ 
+.reveal-if-active {
+  opacity: 1; max-height: 100px; display: inline-table; transform: scale(0.80); 
+  margin: 0 auto; width: 0 auto;padding: 1em; border: 1px solid #CCC;border-radius: 1em; }
+</style> 
+</head>
+<h2 align="center" style="color: #4485b8;">Naresh's Leds</h2> 
+<p align="center" >Choose mode, options &  hit the button </p>
+<form action="{{url_for('handle_data') }}" method="post">
+<div> <label for="mood">Mood </label> 
+<input type="radio" name="Choice" id="Mood" value="Mood" required>
+  <div class = "reveal-if-active"   ><br>
+     Red   <input id="Red"      name="Red"      type="range" min="0" max="255" value={{Red}}       step="1" /> <br>
+     Green <input id="Green"    name="Green"    type="range" min="0" max="255" value={{Green}}     step="1" /> <br>
+     Blue  <input id="Blue"     name="Blue"     type="range" min="0" max="255" value={{Blue}}      step="1" /> <br> 
+     Leds  <input id="MoodLeds" name="MoodLeds" type="range" min="0" max="144" value={{MoodLeds}}  step="1" /> <br> </div> 
+  </div>
+ </div> 
+<div>
+<label for="meter">Meter</label> 
+<input type="radio" name="Choice" id="Meter" value="Meter" required> 
+  <div class = "reveal-if-active" id="reveal-if-active"><br>
+     Leds <input id="MeterLeds" name="MeterLeds" type="range" min="0" max="144"  step="2" value={{MeterLeds}} /> <br>  
+  </div>
+</div> 
+<div> <label for="music">Music </label> 
+<input type="radio" name="Choice" id="Music" value="Music" required> 
+  <div class = "reveal-if-active" id="reveal-if-active"><br>
+    Effect <select id="VizEffect" name="VizEffect"  >
+            <option value = "visualize_energy" id="energy" >Energy</option>
+            <option value = "visualize_scroll" id="scroll">Scroll</option>
+            <option value = "visualize_spectrum" id="spectrum">Spectrum</option>
+            </select>
+     <br>
+     Min  <input id="MinFreq" name="MinFreq"       type="range" min="2000" max="10000" step="1000" value={{MinFreq}}    /> <br>
+     Max  <input id="MaxFreq" name="MaxFreq"       type="range" min="1000" max="20000" step="1000" value={{MaxFreq}}    /> <br>
+     FFTs <input id="FFTBins" name="FFTBins"       type="range" min="5" max="30"       step="1"    value={{FFTBins}}    /> <br>
+     Leds <input id="VizLeds" name="VizLeds"       type="range" min="0" max="144"      step="2"    value={{VizLeds}}     /> <br> </div> 
+  </div>
+ <div>
+<label for="locationl">Off </label> <input type="radio" name="Choice" id="Off" value="Off" required>
+</div> <label></label> <div> <input type="submit"> </div> 
+</form> 
+</html>
